@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -30,10 +31,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} ${mono.variable}`}
-      >
-        {children}
-      </body>
+  className={`${inter.variable} ${playfair.variable} ${mono.variable}`}
+>
+  <Navbar />
+
+  <main>
+    {children}
+  </main>
+ </body>
     </html>
   );
 }
