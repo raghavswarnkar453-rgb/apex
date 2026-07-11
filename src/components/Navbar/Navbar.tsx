@@ -1,26 +1,47 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
+import MenuButton from "./MenuButton";
+import MobileMenu from "./MobileMenu";
+
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  const closeMenu = () => setIsOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-        {/* Logo */}
+    <motion.header
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+      className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl"
+    >
+      <div className="relative mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
         <Logo />
 
-        {/* Desktop Navigation */}
         <NavLinks />
 
-        {/* Mobile Menu Button Placeholder */}
-        <button
-          className="md:hidden rounded-lg border border-white/10 p-2"
-          aria-label="Open Menu"
-        >
-          ☰
-        </button>
+        <MenuButton
+          isOpen={isOpen}
+          toggle={toggleMenu}
+        />
+
+        <MobileMenu
+          isOpen={isOpen}
+          closeMenu={closeMenu}
+        />
       </div>
-    </header>
+    </motion.header>
   );
 }
+
 
