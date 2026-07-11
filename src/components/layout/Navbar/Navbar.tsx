@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import useScroll from "@/hooks/useScroll";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MenuButton from "./MenuButton";
@@ -10,6 +10,8 @@ import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const scrolled = useScroll();
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 

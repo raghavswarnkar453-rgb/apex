@@ -1,23 +1,23 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 
-interface SectionProps {
+interface ContainerProps {
   children: ReactNode;
   className?: string;
 }
 
-export default function Section({
+export default function Container({
   children,
   className,
-}: SectionProps) {
+}: ContainerProps) {
   return (
-    <section
+    <div
       className={clsx(
-        "relative py-20 lg:py-28",
+        "mx-auto w-full max-w-7xl px-6 lg:px-8",
         className
       )}
     >
       {children}
-    </section>
+    </div>
   );
 }
