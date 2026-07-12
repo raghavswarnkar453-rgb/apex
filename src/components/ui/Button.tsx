@@ -19,9 +19,10 @@ export default function Button({
     <button
       {...props}
       className={clsx(
-        "inline-flex items-center justify-center rounded-[14px]",
-        "px-6 py-3",
-        "font-semibold",
+        "inline-flex items-center justify-center gap-2",
+        "rounded-[14px]",
+        "px-7 py-4",
+        "text-base font-semibold",
         "transition-all duration-300",
         "focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/60",
 
@@ -32,7 +33,7 @@ export default function Button({
           "border border-white/10 bg-white/5 text-white backdrop-blur-xl hover:border-[var(--primary)] hover:bg-white/10",
 
         variant === "ghost" &&
-          "text-zinc-300 hover:text-white hover:bg-white/5",
+          "text-zinc-300 hover:bg-white/5 hover:text-white",
 
         className
       )}

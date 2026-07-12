@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
+import Background from "@/components/layout/Background";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -33,6 +33,9 @@ export default function RootLayout({
       <body
   className={`${inter.variable} ${playfair.variable} ${mono.variable}`}
 >
+
+  <Background />
+  
   <Navbar />
 
   <main>

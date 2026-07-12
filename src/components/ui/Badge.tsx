@@ -11,18 +11,19 @@ interface BadgeProps {
 
 export default function Badge({
   children,
-  variant = "primary",
+ variant = "primary",
   className,
 }: BadgeProps) {
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full px-3 py-1",
-        "text-xs font-semibold uppercase tracking-wider",
-        "border transition-all duration-300",
+        "inline-flex items-center gap-2",
+        "rounded-full px-4 py-1.5",
+        "text-xs font-bold uppercase tracking-[0.2em]",
+        "border",
 
         variant === "primary" &&
-          "border-[var(--primary)]/40 bg-[var(--primary)]/10 text-[var(--primary)]",
+          "border-red-500/30 bg-red-500/10 text-red-500",
 
         variant === "success" &&
           "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
