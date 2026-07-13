@@ -14,7 +14,10 @@ export async function getCurrentSchedule() {
   return response.json();
 }
 
-export async function getNextRace() {
+import type { Race } from "@/types/race";
+
+export async function getNextRace(): Promise<Race | null> { 
+  
   const data = await getCurrentSchedule();
 
   const races =

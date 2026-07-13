@@ -20,8 +20,10 @@ import {
 
 import { motion } from "framer-motion";
 
+import type { Race } from "@/types/race";
+
 interface HeroProps {
-  race: any;
+  race: Race;
 }
 
 export default function Hero({ race }: HeroProps) {

@@ -11,8 +11,13 @@ export async function getDriverStandings() {
   );
 
   if (!response.ok) {
-    throw new Error("Unable to fetch driver standings");
+    throw new Error("Failed to fetch driver standings");
   }
 
-  return response.json();
+  const data = await response.json();
+
+  return (
+    data?.MRData?.StandingsTable?.StandingsLists?.[0]
+      ?.DriverStandings ?? []
+  );
 }

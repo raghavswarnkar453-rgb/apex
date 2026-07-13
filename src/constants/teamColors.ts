@@ -1,0 +1,15 @@
+export const TEAM_COLORS: Record<string, string> = {
+  Ferrari: "#DC0000",
+  Mercedes: "#00D2BE",
+  McLaren: "#FF8000",
+  "Red Bull": "#3671C6",
+  "Red Bull Racing": "#3671C6",
+  "RB F1 Team": "#6692FF",
+  Williams: "#005AFF",
+  "Aston Martin": "#006F62",
+  "Aston Martin F1 Team": "#006F62",
+  "Alpine F1 Team": "#0090FF",
+  "Haas F1 Team": "#B6BABD",
+  Audi: "#C0C0C0",
+  "Cadillac F1 Team": "#003DA5",
+};

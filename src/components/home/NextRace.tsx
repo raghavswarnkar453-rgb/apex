@@ -1,8 +1,10 @@
 import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 
+import type { Race } from "@/types/race";
+
 interface NextRaceProps {
-  race: any;
+  race: Race;
 }
 
 export default function NextRace({ race }: NextRaceProps) {
