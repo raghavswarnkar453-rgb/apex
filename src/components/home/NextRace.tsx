@@ -1,10 +1,13 @@
 import { Badge, Card, Container, Section } from "@/components/ui";
+import { RACE_METADATA } from "@/constants/raceMetadata";
 
 interface NextRaceProps {
   race: any;
 }
 
 export default function NextRace({ race }: NextRaceProps) {
+const laps =   
+  RACE_METADATA[race?.Circuit?.circuitId]?.laps ?? "--";
   return (
     <Section>
       <Container>
@@ -40,8 +43,8 @@ export default function NextRace({ race }: NextRaceProps) {
             />
 
             <Info
-              label="Round"
-              value={race?.round}
+              label="Laps"
+              value={String(laps)}
             />
 
             <Info
