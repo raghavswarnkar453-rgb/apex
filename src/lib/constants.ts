@@ -1,0 +1,1 @@
+export const API_BASE = "https://api.jolpi.ca/ergast/f1";

@@ -1,9 +1,14 @@
 import Hero from "@/components/home/Hero";
+import NextRace from "@/components/home/NextRace";
+import { getNextRace } from "@/services/race"; 
 
-export default function Home() {
+export default async function Home() {
+  const race = await getNextRace();
+
   return (
     <>
-      <Hero />
+      <Hero race={race} />
+      <NextRace race={race} />
     </>
   );
 }

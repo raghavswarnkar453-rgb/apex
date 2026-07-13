@@ -3,13 +3,30 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui";
 
-const TARGET_DATE = new Date("2026-07-26T19:30:00+05:30"); // Belgian GP (placeholder)
+interface CountdownProps {
+  targetDate: string;
+  targetTime?: string;
+}
 
-export default function Countdown() {
-  const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
-
+export default function Countdown({
+  targetDate,
+  targetTime,
+}: CountdownProps) {
   function getTimeRemaining() {
-    const total = TARGET_DATE.getTime() - Date.now();
+    if (!targetDate) {
+      return {
+        days: "00",
+        hours: "00",
+        minutes: "00",
+        seconds: "00",
+      };
+    }
+
+    const target = new Date(
+      `${targetDate}T${targetTime ?? "00:00:00Z"}`
+    );
+
+    const total = target.getTime() - Date.now();
 
     if (total <= 0) {
       return {
@@ -21,20 +38,42 @@ export default function Countdown() {
     }
 
     return {
-      days: String(Math.floor(total / (1000 * 60 * 60 * 24))).padStart(2, "0"),
-      hours: String(Math.floor((total / (1000 * 60 * 60)) % 24)).padStart(2, "0"),
-      minutes: String(Math.floor((total / (1000 * 60)) % 60)).padStart(2, "0"),
-      seconds: String(Math.floor((total / 1000) % 60)).padStart(2, "0"),
+      days: String(
+        Math.floor(total / (1000 * 60 * 60 * 24))
+      ).padStart(2, "0"),
+
+      hours: String(
+        Math.floor((total / (1000 * 60 * 60)) % 24)
+      ).padStart(2, "0"),
+
+      minutes: String(
+        Math.floor((total / (1000 * 60)) % 60)
+      ).padStart(2, "0"),
+
+      seconds: String(
+        Math.floor((total / 1000) % 60)
+      ).padStart(2, "0"),
     };
   }
 
+ const emptyTime = {
+  days: "00",
+  hours: "00",
+  minutes: "00",
+  seconds: "00",
+};
+
+const [timeLeft, setTimeLeft] = useState(emptyTime);
+
   useEffect(() => {
+    setTimeLeft(getTimeRemaining());
+
     const timer = setInterval(() => {
       setTimeLeft(getTimeRemaining());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate, targetTime]);
 
   const items = [
     ["Days", timeLeft.days],
