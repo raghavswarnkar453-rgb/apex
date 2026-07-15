@@ -1,11 +1,13 @@
+export interface ConstructorRef {
+  constructorId: string;
+  name: string;
+  nationality: string;
+}
+
 export interface ConstructorStanding {
   position: string;
+  positionText: string;
   points: string;
   wins: string;
-
-  constructor: {
-    constructorId: string;
-    name: string;
-    nationality: string;
-  };
+  Constructor: ConstructorRef;
 }

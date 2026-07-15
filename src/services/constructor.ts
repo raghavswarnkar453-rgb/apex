@@ -1,6 +1,10 @@
 import { API_BASE } from "@/lib/constants";
 
-export async function getConstructorStandings() {
+import type { ConstructorStanding } from "@/types/constructor";
+
+export async function getConstructorStandings(): Promise<
+  ConstructorStanding[]
+> {
   const response = await fetch(
     `${API_BASE}/current/constructorstandings`,
     {
@@ -11,8 +15,15 @@ export async function getConstructorStandings() {
   );
 
   if (!response.ok) {
-    throw new Error("Unable to fetch constructor standings");
+    throw new Error(
+      "Failed to fetch constructor standings"
+    );
   }
 
-  return response.json();
+  const data = await response.json();
+
+  return (
+    data?.MRData?.StandingsTable?.StandingsLists?.[0]
+      ?.ConstructorStandings ?? []
+  );
 }
