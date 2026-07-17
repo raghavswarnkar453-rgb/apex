@@ -3,7 +3,7 @@
 import { Badge, Card, Container, Section } from "@/components/ui";
 import type { CalendarRace } from "@/types/calendar";
 import { motion } from "framer-motion";
-
+import Link from "next/link";
 interface SeasonCalendarProps {
   races: CalendarRace[];
   nextRaceRound: string;
@@ -93,7 +93,11 @@ function DesktopRow({
       ? "border-red-500/30 bg-red-500/10 text-red-400"
       : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
 
-  return (
+ return (
+  <Link
+    href={`/race/${race.round}`}
+    className="contents"
+  >
     <motion.div
       initial={{
         opacity: 0,
@@ -109,7 +113,7 @@ function DesktopRow({
       transition={{
         duration: 0.35,
       }}
-      className="grid grid-cols-[90px_2fr_1.6fr_160px_150px] items-center border-b border-white/5 px-8 py-5 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(255,255,255,0.03)]"
+      className="grid grid-cols-[90px_2fr_1.6fr_160px_150px] items-center border-b border-white/5 px-8 py-5 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(255,255,255,0.03)] cursor-pointer"
     >
       <div className="flex">
         <span className="rounded-lg border border-white/10 bg-white/5 px-3 py-1 font-mono text-sm font-semibold">
@@ -162,7 +166,8 @@ function DesktopRow({
         {status}
       </span>
     </motion.div>
-  );
+  </Link>
+);
 }
 function MobileCard({
   race,
@@ -189,7 +194,8 @@ function MobileCard({
       ? "border-red-500/30 bg-red-500/10 text-red-400"
       : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
 
-  return (
+ return (
+  <Link href={`/race/${race.round}`}>
     <motion.div
       initial={{
         opacity: 0,
@@ -205,7 +211,7 @@ function MobileCard({
       transition={{
         duration: 0.35,
       }}
-      className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(255,255,255,0.03)]"
+      className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(255,255,255,0.03)] cursor-pointer"
     >
       <div className="flex items-start justify-between">
         <div>
@@ -257,5 +263,6 @@ function MobileCard({
         </span>
       </div>
     </motion.div>
-  );
+  </Link>
+);
 }
