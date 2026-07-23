@@ -7,42 +7,33 @@ export const RACE_METADATA: Record<
     firstGrandPrix: number;
     country: string;
     countryCode: string;
+    direction: "Clockwise" | "Anti-clockwise";
+    drsZones: number;
+    lapRecord: string;
   }
 > = {
-  spa: {
-    laps: 44,
-    length: "7.004 km",
-    corners: 19,
-    firstGrandPrix: 1950,
-    country: "Belgium",
-    countryCode: "BE",
-  },
-
-  hungaroring: {
-    laps: 70,
-    length: "4.381 km",
+  albert_park: {
+    laps: 58,
+    length: "5.278 km",
     corners: 14,
-    firstGrandPrix: 1986,
-    country: "Hungary",
-    countryCode: "HU",
+    firstGrandPrix: 1996,
+    country: "Australia",
+    countryCode: "AU",
+    direction: "Clockwise",
+    drsZones: 4,
+    lapRecord: "1:19.813",
   },
 
-  monza: {
-    laps: 53,
-    length: "5.793 km",
-    corners: 11,
-    firstGrandPrix: 1950,
-    country: "Italy",
-    countryCode: "IT",
-  },
-
-  silverstone: {
-    laps: 52,
-    length: "5.891 km",
-    corners: 18,
-    firstGrandPrix: 1950,
-    country: "United Kingdom",
-    countryCode: "GB",
+  shanghai: {
+    laps: 56,
+    length: "5.451 km",
+    corners: 16,
+    firstGrandPrix: 2004,
+    country: "China",
+    countryCode: "CN",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:32.238",
   },
 
   suzuka: {
@@ -52,6 +43,57 @@ export const RACE_METADATA: Record<
     firstGrandPrix: 1987,
     country: "Japan",
     countryCode: "JP",
+    direction: "Clockwise",
+    drsZones: 1,
+    lapRecord: "1:30.983",
+  },
+
+  sakhir: {
+    laps: 57,
+    length: "5.412 km",
+    corners: 15,
+    firstGrandPrix: 2004,
+    country: "Bahrain",
+    countryCode: "BH",
+    direction: "Clockwise",
+    drsZones: 3,
+    lapRecord: "1:31.447",
+  },
+
+  jeddah: {
+    laps: 50,
+    length: "6.174 km",
+    corners: 27,
+    firstGrandPrix: 2021,
+    country: "Saudi Arabia",
+    countryCode: "SA",
+    direction: "Anti-clockwise",
+    drsZones: 3,
+    lapRecord: "1:30.734",
+  },
+
+  miami: {
+    laps: 57,
+    length: "5.412 km",
+    corners: 19,
+    firstGrandPrix: 2022,
+    country: "United States",
+    countryCode: "US",
+    direction: "Anti-clockwise",
+    drsZones: 3,
+    lapRecord: "1:29.708",
+  },
+
+  imola: {
+    laps: 63,
+    length: "4.909 km",
+    corners: 19,
+    firstGrandPrix: 1980,
+    country: "Italy",
+    countryCode: "IT",
+    direction: "Anti-clockwise",
+    drsZones: 1,
+    lapRecord: "1:15.484",
   },
 
   monaco: {
@@ -61,6 +103,152 @@ export const RACE_METADATA: Record<
     firstGrandPrix: 1950,
     country: "Monaco",
     countryCode: "MC",
+    direction: "Clockwise",
+    drsZones: 1,
+    lapRecord: "1:12.909",
+  },
+
+  catalunya: {
+    laps: 66,
+    length: "4.657 km",
+    corners: 14,
+    firstGrandPrix: 1991,
+    country: "Spain",
+    countryCode: "ES",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:16.330",
+  },
+
+  villeneuve: {
+    laps: 70,
+    length: "4.361 km",
+    corners: 14,
+    firstGrandPrix: 1978,
+    country: "Canada",
+    countryCode: "CA",
+    direction: "Clockwise",
+    drsZones: 3,
+    lapRecord: "1:13.078",
+  },
+    red_bull_ring: {
+    laps: 71,
+    length: "4.318 km",
+    corners: 10,
+    firstGrandPrix: 1970,
+    country: "Austria",
+    countryCode: "AT",
+    direction: "Clockwise",
+    drsZones: 3,
+    lapRecord: "1:05.619",
+  },
+
+  silverstone: {
+    laps: 52,
+    length: "5.891 km",
+    corners: 18,
+    firstGrandPrix: 1950,
+    country: "United Kingdom",
+    countryCode: "GB",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:27.097",
+  },
+
+  spa: {
+    laps: 44,
+    length: "7.004 km",
+    corners: 19,
+    firstGrandPrix: 1950,
+    country: "Belgium",
+    countryCode: "BE",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:46.286",
+  },
+
+  hungaroring: {
+    laps: 70,
+    length: "4.381 km",
+    corners: 14,
+    firstGrandPrix: 1986,
+    country: "Hungary",
+    countryCode: "HU",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:16.627",
+  },
+
+  zandvoort: {
+    laps: 72,
+    length: "4.259 km",
+    corners: 14,
+    firstGrandPrix: 1952,
+    country: "Netherlands",
+    countryCode: "NL",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:11.097",
+  },
+
+  monza: {
+    laps: 53,
+    length: "5.793 km",
+    corners: 11,
+    firstGrandPrix: 1950,
+    country: "Italy",
+    countryCode: "IT",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:21.046",
+  },
+
+  baku: {
+    laps: 51,
+    length: "6.003 km",
+    corners: 20,
+    firstGrandPrix: 2016,
+    country: "Azerbaijan",
+    countryCode: "AZ",
+    direction: "Anti-clockwise",
+    drsZones: 2,
+    lapRecord: "1:43.009",
+  },
+
+  marina_bay: {
+    laps: 62,
+    length: "4.940 km",
+    corners: 19,
+    firstGrandPrix: 2008,
+    country: "Singapore",
+    countryCode: "SG",
+    direction: "Anti-clockwise",
+    drsZones: 4,
+    lapRecord: "1:34.486",
+  },
+
+  americas: {
+    laps: 56,
+    length: "5.513 km",
+    corners: 20,
+    firstGrandPrix: 2012,
+    country: "United States",
+    countryCode: "US",
+    direction: "Anti-clockwise",
+    drsZones: 2,
+    lapRecord: "1:36.169",
+  },
+
+  rodriguez: {
+    laps: 71,
+    length: "4.304 km",
+    corners: 17,
+    firstGrandPrix: 1963,
+    country: "Mexico",
+    countryCode: "MX",
+    direction: "Clockwise",
+    drsZones: 3,
+    lapRecord: "1:17.774",
   },
 
   interlagos: {
@@ -70,6 +258,33 @@ export const RACE_METADATA: Record<
     firstGrandPrix: 1973,
     country: "Brazil",
     countryCode: "BR",
+    direction: "Anti-clockwise",
+    drsZones: 2,
+    lapRecord: "1:10.540",
+  },
+
+  vegas: {
+    laps: 50,
+    length: "6.201 km",
+    corners: 17,
+    firstGrandPrix: 2023,
+    country: "United States",
+    countryCode: "US",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "1:35.490",
+  },
+
+  losail: {
+    laps: 57,
+    length: "5.419 km",
+    corners: 16,
+    firstGrandPrix: 2021,
+    country: "Qatar",
+    countryCode: "QA",
+    direction: "Clockwise",
+    drsZones: 1,
+    lapRecord: "1:22.384",
   },
 
   yas_marina: {
@@ -79,5 +294,19 @@ export const RACE_METADATA: Record<
     firstGrandPrix: 2009,
     country: "United Arab Emirates",
     countryCode: "AE",
+    direction: "Anti-clockwise",
+    drsZones: 2,
+    lapRecord: "1:26.103",
+  },
+    madring: {
+    laps: 57,
+    length: "5.470 km",
+    corners: 22,
+    firstGrandPrix: 2026,
+    country: "Spain",
+    countryCode: "ES",
+    direction: "Clockwise",
+    drsZones: 2,
+    lapRecord: "-",
   },
 };

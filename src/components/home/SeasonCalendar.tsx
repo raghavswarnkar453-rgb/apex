@@ -1,5 +1,5 @@
 "use client";
-
+import { formatDate } from "@/lib/date";
 import { Badge, Card, Container, Section } from "@/components/ui";
 import type { CalendarRace } from "@/types/calendar";
 import { motion } from "framer-motion";
@@ -137,14 +137,7 @@ function DesktopRow({
       </span>
 
       <span>
-        {new Date(race.date).toLocaleDateString(
-          "en-GB",
-          {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          }
-        )}
+       {formatDate(race.date)}
       </span>
 
       <span
@@ -233,14 +226,7 @@ function MobileCard({
           </p>
 
           <p className="mt-4 text-sm">
-            {new Date(race.date).toLocaleDateString(
-              "en-GB",
-              {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              }
-            )}
+            {formatDate(race.date)}
           </p>
         </div>
 

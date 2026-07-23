@@ -12,26 +12,26 @@ interface RaceWeekendResponse {
 export async function getRaceWeekend(
   round: string
 ): Promise<RaceWeekend | null> {
-  const response = await fetch(
-    `${API_BASE}/current/${round}`,
-    {
-      next: {
-        revalidate: 3600,
-      },
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error(
-      "Failed to fetch race weekend"
+  try {
+    const response = await fetch(
+      `${API_BASE}/current/${round}.json`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      }
     );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data: RaceWeekendResponse =
+      await response.json();
+
+    return data.MRData.RaceTable.Races[0] ?? null;
+  } catch (error) {
+    console.error("Race weekend fetch failed:", error);
+    return null;
   }
-
-  const data: RaceWeekendResponse =
-    await response.json();
-
-  return (
-    data.MRData.RaceTable.Races[0] ??
-    null
-  );
 }

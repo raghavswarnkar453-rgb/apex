@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-
+import {
+  formatDate,
+  formatTime,
+} from "@/lib/date";
 import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { getRaceWeekend } from "@/services/raceWeekend";
@@ -109,15 +112,9 @@ export default async function RaceWeekendPage({
         />
 
         <Info
-          label="Race Date"
-          value={new Date(
-            race.date
-          ).toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          })}
-        />
+            label="Race Date"
+            value={formatDate(race.date)}
+         /> 
 
       </div>
     </Card>
@@ -141,23 +138,16 @@ export default async function RaceWeekendPage({
                   </span>
 
                   <div>
-                    <p>
-                      {new Date(
-                        item!.session!.date
-                      ).toLocaleDateString("en-GB", {
-                        weekday: "short",
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </p>
+                   <p>
+                      {formatDate(item!.session!.date)}
+                  </p>
 
                     <p className="mt-1 text-zinc-500">
-                      {item!.session!.time.replace(
-                        "Z",
-                        " UTC"
-                      )}
-                    </p>
+                     {formatTime(
+                      item!.session!.date,
+                      item!.session!.time
+                        )}
+                        </p>
                   </div>
                 </div>
               ))}
