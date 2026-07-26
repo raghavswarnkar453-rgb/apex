@@ -2,6 +2,8 @@ import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { formatDate } from "@/lib/date";
 import type { Race } from "@/types/race";
+import Link from "next/link";
+import { Button } from "@/components/ui";
 
 interface NextRaceProps {
   race: Race;
@@ -31,28 +33,38 @@ export default function NextRace({
         </div>
 
         <Card className="p-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <Info
-              label="Date"
-              value={formatDate(race.date)}
-            />
+  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <Info
+      label="Date"
+      value={formatDate(race.date)}
+    />
+
+    <Info
+      label="Country"
+      value={race.Circuit.Location.country}
+    />
+
+    <Info
+      label="Laps"
+      value={String(metadata?.laps ?? "--")}
+    />
 
             <Info
-              label="Country"
-              value={race.Circuit.Location.country}
-            />
+               label="Circuit"
+               value={race.Circuit.Location.locality}
+              />
+           </div>
 
-            <Info
-              label="Laps"
-              value={String(metadata?.laps ?? "--")}
-            />
-
-            <Info
-              label="Circuit"
-              value={race.Circuit.Location.locality}
-            />
-          </div>
-        </Card>
+            <div className="mt-8">
+             <Link
+               href={`/circuits/${race.Circuit.circuitId}`}
+             >
+              <Button variant="secondary">
+               View Circuit
+              </Button>
+             </Link>
+            </div>
+          </Card>
       </Container>
     </Section>
   );

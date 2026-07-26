@@ -188,7 +188,7 @@ function MobileCard({
       : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
 
  return (
-  <Link href={`/race/${race.round}`}>
+  <Link href={`/circuits/${race.Circuit.circuitId}`}>
     <motion.div
       initial={{
         opacity: 0,

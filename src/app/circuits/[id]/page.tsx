@@ -1,8 +1,18 @@
 import { notFound } from "next/navigation";
 
+import { Container, Section } from "@/components/ui";
+
+import CircuitHero from "@/components/circuit/CircuitHero";
+import CircuitStats from "@/components/circuit/CircuitStats";
+import CircuitOverview from "@/components/circuit/CircuitOverview";
+import LapRecordCard from "@/components/circuit/LapRecordCard";
+import CircuitMap from "@/components/circuit/CircuitMap";
+import WeatherCard from "@/components/circuit/WeatherCard";
+import CircuitFacts from "@/components/circuit/CircuitFacts";
+
 import { getCircuit } from "@/services/circuit";
 
-interface Props {
+interface PageProps {
   params: Promise<{
     id: string;
   }>;
@@ -10,7 +20,7 @@ interface Props {
 
 export default async function CircuitPage({
   params,
-}: Props) {
+}: PageProps) {
   const { id } = await params;
 
   const circuit = await getCircuit(id);
@@ -20,15 +30,50 @@ export default async function CircuitPage({
   }
 
   return (
-    <main className="p-12">
-      <h1 className="text-5xl font-bold">
-        {circuit.circuitName}
-      </h1>
+    <>
+      <CircuitHero circuit={circuit} />
 
-      <p className="mt-4 text-zinc-400">
-        {circuit.Location.locality},{" "}
-        {circuit.Location.country}
-      </p>
-    </main>
+      <Section>
+        <Container className="space-y-12">
+          <CircuitStats
+            circuitId={circuit.circuitId}
+          />
+
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+            <CircuitOverview
+              circuit={circuit}
+            />
+
+            <CircuitFacts
+              circuitId={circuit.circuitId}
+            />
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
+            <CircuitMap
+              circuitName={
+                circuit.circuitName
+              }
+              locality={
+                circuit.Location.locality
+              }
+              country={
+                circuit.Location.country
+              }
+            />
+
+            <div className="space-y-8">
+              <LapRecordCard
+                circuitId={
+                  circuit.circuitId
+                }
+              />
+
+              <WeatherCard />
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </>
   );
 }

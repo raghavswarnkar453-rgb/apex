@@ -6,6 +6,8 @@ import {
 import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { getRaceWeekend } from "@/services/raceWeekend";
+import Link from "next/link";
+import { Button } from "@/components/ui";
 
 interface PageProps {
   params: Promise<{
@@ -115,7 +117,9 @@ export default async function RaceWeekendPage({
             label="Race Date"
             value={formatDate(race.date)}
          /> 
-
+           <Link href={`/circuits/${race.Circuit.circuitId}`}>
+           <Button>View Circuit</Button>
+           </Link>
       </div>
     </Card>
   </div>
