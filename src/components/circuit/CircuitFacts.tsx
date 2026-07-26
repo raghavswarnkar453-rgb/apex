@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
-
+import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitFactsProps {
   circuitId: string;
 }
@@ -9,7 +9,7 @@ export default function CircuitFacts({
   circuitId,
 }: CircuitFactsProps) {
   const metadata =
-    RACE_METADATA[circuitId];
+  getCircuitMetadata(circuitId);
 
   const facts = [
     {

@@ -94,10 +94,10 @@ function DesktopRow({
       : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
 
  return (
-  <Link
-    href={`/race/${race.round}`}
-    className="contents"
-  >
+      <Link
+         href={`/circuits/${race.Circuit.circuitId}`}
+         className="contents"
+         >      
     <motion.div
       initial={{
         opacity: 0,
@@ -188,7 +188,9 @@ function MobileCard({
       : "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
 
  return (
-  <Link href={`/circuits/${race.Circuit.circuitId}`}>
+  <Link
+  href={`/circuits/${race.Circuit.circuitId}`}
+>
     <motion.div
       initial={{
         opacity: 0,

@@ -118,7 +118,9 @@ export default async function RaceWeekendPage({
             value={formatDate(race.date)}
          /> 
            <Link href={`/circuits/${race.Circuit.circuitId}`}>
-           <Button>View Circuit</Button>
+           <Button className="mt-4 w-full">
+              View Circuit
+            </Button>
            </Link>
       </div>
     </Card>

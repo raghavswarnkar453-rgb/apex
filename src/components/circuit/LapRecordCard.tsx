@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { Clock3, Flag, Trophy } from "lucide-react";
-
+import { getCircuitMetadata } from "@/lib/circuit";
 interface LapRecordCardProps {
   circuitId: string;
 }
@@ -9,8 +9,8 @@ interface LapRecordCardProps {
 export default function LapRecordCard({
   circuitId,
 }: LapRecordCardProps) {
-  const metadata =
-    RACE_METADATA[circuitId];
+ const metadata =
+  getCircuitMetadata(circuitId);
 
   return (
     <Card className="p-8">

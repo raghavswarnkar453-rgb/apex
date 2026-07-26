@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import type { Circuit } from "@/types/circuit";
-
+import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitOverviewProps {
   circuit: Circuit;
 }
@@ -10,7 +10,9 @@ export default function CircuitOverview({
   circuit,
 }: CircuitOverviewProps) {
   const metadata =
-    RACE_METADATA[circuit.circuitId];
+  getCircuitMetadata(
+    circuit.circuitId
+  );
 
   return (
     <Card className="p-8">

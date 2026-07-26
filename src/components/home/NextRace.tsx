@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/date";
 import type { Race } from "@/types/race";
 import Link from "next/link";
 import { Button } from "@/components/ui";
-
+import { getCircuitMetadata } from "@/lib/circuit";
 interface NextRaceProps {
   race: Race;
 }
@@ -13,7 +13,9 @@ export default function NextRace({
   race,
 }: NextRaceProps) {
   const metadata =
-    RACE_METADATA[race.Circuit.circuitId];
+  getCircuitMetadata(
+    race.Circuit.circuitId
+  );
 
   return (
     <Section>

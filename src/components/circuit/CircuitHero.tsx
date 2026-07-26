@@ -2,6 +2,7 @@ import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import type { Circuit } from "@/types/circuit";
 import Image from "next/image";
+import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitHeroProps {
   circuit: Circuit;
 }
@@ -10,7 +11,9 @@ export default function CircuitHero({
   circuit,
 }: CircuitHeroProps) {
   const metadata =
-    RACE_METADATA[circuit.circuitId];
+  getCircuitMetadata(
+    circuit.circuitId
+  );
 
   return (
     <Section>
