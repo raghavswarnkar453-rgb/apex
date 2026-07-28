@@ -1,3 +1,4 @@
+"use client";
 import { Badge, Card, Container, Section } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import type { Circuit } from "@/types/circuit";
@@ -6,7 +7,7 @@ import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitHeroProps {
   circuit: Circuit;
 }
-
+import { motion } from "framer-motion";
 export default function CircuitHero({
   circuit,
 }: CircuitHeroProps) {
@@ -16,9 +17,25 @@ export default function CircuitHero({
   );
 
   return (
+     <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.4,
+    }}
+  >
     <Section>
       <Container>
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-14 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Badge variant="primary">
               CIRCUIT EXPLORER
@@ -48,7 +65,7 @@ export default function CircuitHero({
             </p>
           </div>
 
-          <Card className="w-full max-w-md">
+          <Card className="w-full max-w-md border border-red-500/20 bg-white/[0.03] backdrop-blur-xl">
             <p className="font-mono text-xs tracking-[0.3em] text-emerald-400">
               CIRCUIT DATA
             </p>
@@ -92,6 +109,7 @@ export default function CircuitHero({
         </div>
       </Container>
     </Section>
+  </motion.div>
   );
 }
 

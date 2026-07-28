@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/ui";
 import {
   CloudSun,
@@ -5,10 +6,26 @@ import {
   Wind,
   Droplets,
 } from "lucide-react";
-
+import { motion } from "framer-motion";
 export default function WeatherCard() {
   return (
-    <Card className="p-8">
+    <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.4,
+    }}
+  >
+    <Card className="p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)] ">
       <div className="flex items-center gap-3">
         <CloudSun
           className="text-sky-400"
@@ -52,7 +69,9 @@ export default function WeatherCard() {
         />
       </div>
     </Card>
+      </motion.div>
   );
+    
 }
 
 function Row({

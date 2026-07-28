@@ -1,9 +1,10 @@
+"use client";
 import { Card } from "@/components/ui";
 import {
   Map,
   MapPinned,
 } from "lucide-react";
-
+import { motion } from "framer-motion";
 interface CircuitMapProps {
   circuitName: string;
   locality: string;
@@ -16,7 +17,23 @@ export default function CircuitMap({
   country,
 }: CircuitMapProps) {
   return (
-    <Card className="overflow-hidden p-0">
+    <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.4,
+    }}
+  >
+    <Card className="overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)]">
       <div className="border-b border-white/10 bg-white/5 px-8 py-5">
         <div className="flex items-center gap-3">
           <Map
@@ -57,5 +74,6 @@ export default function CircuitMap({
         </div>
       </div>
     </Card>
+    </motion.div>
   );
 }

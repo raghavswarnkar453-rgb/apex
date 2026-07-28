@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { Clock3, Flag, Trophy } from "lucide-react";
@@ -5,7 +6,7 @@ import { getCircuitMetadata } from "@/lib/circuit";
 interface LapRecordCardProps {
   circuitId: string;
 }
-
+import { motion } from "framer-motion";
 export default function LapRecordCard({
   circuitId,
 }: LapRecordCardProps) {
@@ -13,7 +14,23 @@ export default function LapRecordCard({
   getCircuitMetadata(circuitId);
 
   return (
-    <Card className="p-8">
+    <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.4,
+    }}
+  >
+    <Card className="p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)] ">
       <div className="flex items-center gap-3">
         <Trophy
           className="text-yellow-400"
@@ -53,6 +70,7 @@ export default function LapRecordCard({
 
       </div>
     </Card>
+     </motion.div>
   );
 }
 

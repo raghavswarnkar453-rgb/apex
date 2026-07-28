@@ -1,10 +1,11 @@
+"use client";
 import { Card } from "@/components/ui";
 import { RACE_METADATA } from "@/constants/raceMetadata";
 import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitFactsProps {
   circuitId: string;
 }
-
+import { motion } from "framer-motion";
 export default function CircuitFacts({
   circuitId,
 }: CircuitFactsProps) {
@@ -55,12 +56,28 @@ export default function CircuitFacts({
   ];
 
   return (
-    <Card className="p-8">
+    <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.4,
+    }}
+  >
+    <Card className="p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)] ">
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-400">
         CIRCUIT FACTS
       </p>
 
-      <h2 className="mt-3 text-2xl font-bold">
+      <h2 className="mt-3 text-3xl font-bold">
         Technical Information
       </h2>
 
@@ -81,5 +98,6 @@ export default function CircuitFacts({
         ))}
       </div>
     </Card>
+      </motion.div>
   );
 }

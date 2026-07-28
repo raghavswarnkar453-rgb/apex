@@ -33,13 +33,14 @@ export default async function CircuitPage({
     <>
       <CircuitHero circuit={circuit} />
 
-      <Section>
-        <Container className="space-y-12">
+      
+    <Section>
+        <Container className="space-y-16">
           <CircuitStats
             circuitId={circuit.circuitId}
           />
 
-          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
             <CircuitOverview
               circuit={circuit}
             />
@@ -49,7 +50,7 @@ export default async function CircuitPage({
             />
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
+          <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr]">
             <CircuitMap
               circuitName={
                 circuit.circuitName
@@ -74,6 +75,7 @@ export default async function CircuitPage({
           </div>
         </Container>
       </Section>
+      
     </>
   );
 }
