@@ -29,7 +29,7 @@ export default function DriverStats({
   ];
 
   return (
-    <Card className="p-8">
+    <Card className="border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl">
       <h2 className="text-3xl font-bold">
         Season Statistics
       </h2>
@@ -38,13 +38,13 @@ export default function DriverStats({
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-red-500/30 hover:bg-white/[0.05]"
+            className="group rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-red-500/30 hover:bg-white/[0.05]"
           >
             <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
               {stat.label}
             </p>
 
-            <p className="mt-4 text-4xl font-bold">
+            <p className="mt-4 text-5xl font-black transition-colors group-hover:text-red-400">
               {stat.value}
             </p>
           </div>

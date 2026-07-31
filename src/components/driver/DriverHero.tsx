@@ -5,7 +5,7 @@ import type {
   DriverRef,
   DriverStanding,
 } from "@/types/driver";
-
+import DriverHeader from "./DriverHeader";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -40,28 +40,11 @@ export default function DriverHero({
             }}
             className="space-y-6"
           >
-            <Badge variant="primary">
-              DRIVER PROFILE
-            </Badge>
-
-            <div>
-              <p className="font-mono text-sm uppercase tracking-[0.3em] text-zinc-500">
-                #{driver.permanentNumber ?? "--"}
-              </p>
-
-              <h1 className="mt-4 text-5xl font-bold lg:text-6xl">
-                {driver.givenName}{" "}
-                {driver.familyName}
-              </h1>
-
-              <p className="mt-4 text-xl text-zinc-400">
-                {constructor.name}
-              </p>
-
-              <p className="mt-2 text-zinc-500">
-                {driver.nationality}
-              </p>
-            </div>
+            <DriverHeader
+             driver={driver}
+            standing={standing}
+             />
+            
           </motion.div>
 
           <motion.div
@@ -77,9 +60,10 @@ export default function DriverHero({
               duration: 0.5,
             }}
           >
-            <Card className="w-full max-w-sm p-8">
+            <Card className="w-full max-w-sm border border-red-500/20 bg-white/[0.03] p-8 backdrop-blur-xl">
 
-              <div className="flex justify-center">
+              <div className="relative flex justify-center">
+                <div className="absolute h-44 w-44 rounded-full bg-red-500/10 blur-3xl" />
                 <Image
                   src="/driver-placeholder.png"
                   alt={driver.familyName}
@@ -91,25 +75,29 @@ export default function DriverHero({
 
               <div className="mt-8 space-y-5">
 
-                <Info
-                  label="Position"
-                  value={standing.position}
-                />
+                <div className="mt-8 space-y-5">
 
-                <Info
-                  label="Points"
-                  value={standing.points}
-                />
+                 <Info
+                 label="Championship"
+                 value={`P${standing.position}`}
+                   />
 
-                <Info
-                  label="Wins"
-                  value={standing.wins}
-                />
+                    <Info
+                    label="Points"
+                     value={standing.points}
+                           />
 
-                <Info
-                  label="Constructor"
-                  value={constructor.name}
-                />
+                       <Info
+                      label="Race Wins"
+                       value={standing.wins}
+                             />
+
+                       <Info
+                       label="Constructor"
+                         value={constructor.name}
+                          />
+
+</div>
 
               </div>
 
@@ -130,14 +118,16 @@ function Info({
   value: string;
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-white/5 pb-4">
-      <span className="text-zinc-500">
+    <div className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3 transition-colors duration-300 hover:border-red-500/20">
+
+      <span className="text-sm uppercase tracking-[0.2em] text-zinc-500">
         {label}
       </span>
 
-      <span className="font-semibold">
+      <span className="font-mono text-lg font-bold text-white">
         {value}
       </span>
+
     </div>
   );
 }

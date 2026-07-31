@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 
 import DriverHero from "@/components/driver/DriverHero";
 import DriverProfile from "@/components/driver/DriverProfile";
+import DriverStats from "@/components/driver/DriverStats";
+import DriverSeason from "@/components/driver/DriverSeason";
 
 import {
   getDriver,
@@ -46,6 +48,15 @@ export default async function DriverPage({
           driver={driver}
           standing={standing}
         />
+        <div className="grid gap-8 lg:grid-cols-2">
+  <DriverStats
+    standing={standing}
+  />
+
+  <DriverSeason
+    standing={standing}
+  />
+</div>
       </Container>
     </main>
   );
