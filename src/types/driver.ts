@@ -12,6 +12,7 @@ export interface DriverRef {
   familyName: string;
   dateOfBirth: string;
   nationality: string;
+  url?: string;
 }
 
 export interface DriverStanding {
@@ -21,4 +22,12 @@ export interface DriverStanding {
   wins: string;
   Driver: DriverRef;
   Constructors: ConstructorRef[];
+}
+
+export interface DriverResponse {
+  MRData: {
+    DriverTable: {
+      Drivers: DriverRef[];
+    };
+  };
 }
