@@ -2,6 +2,7 @@ export interface ConstructorRef {
   constructorId: string;
   name: string;
   nationality: string;
+  url?: string;
 }
 
 export interface ConstructorStanding {
@@ -10,4 +11,12 @@ export interface ConstructorStanding {
   points: string;
   wins: string;
   Constructor: ConstructorRef;
+}
+
+export interface ConstructorResponse {
+  MRData: {
+    ConstructorTable: {
+      Constructors: ConstructorRef[];
+    };
+  };
 }
