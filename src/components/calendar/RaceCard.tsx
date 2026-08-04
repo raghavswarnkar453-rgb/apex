@@ -22,6 +22,18 @@ export default function RaceCard({
   const countryCode = getCountryCode(
     race.Circuit.Location.country
   );
+  const raceDate = new Date(
+  `${race.date}T${race.time ?? "00:00:00Z"}`
+);
+
+const now = new Date();
+
+const status =
+  isNextRace
+    ? "NEXT"
+    : raceDate < now
+      ? "COMPLETED"
+      : "UPCOMING";
 
   return (
     <Link href={`/race/${race.round}`}>
@@ -40,11 +52,17 @@ export default function RaceCard({
             Round {race.round}
           </Badge>
 
-          {isNextRace && (
-            <Badge variant="success">
-              NEXT
-            </Badge>
-          )}
+          <Badge
+                variant={
+                 status === "NEXT"
+                   ? "success"
+                : status === "COMPLETED"
+                ? "neutral"
+              : "primary"
+                }
+            >
+           {status}
+         </Badge>
         </div>
 
         <div className="mt-8 flex items-center gap-3">

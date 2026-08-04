@@ -8,7 +8,7 @@ import { RACE_METADATA } from "@/constants/raceMetadata";
 import { getRaceWeekend } from "@/services/raceWeekend";
 import Link from "next/link";
 import { Button } from "@/components/ui";
-
+import RaceTimeline from "@/components/race/RaceTimeline";
 interface PageProps {
   params: Promise<{
     round: string;
@@ -28,36 +28,51 @@ export default async function RaceWeekendPage({
 
   const metadata =
     RACE_METADATA[race.Circuit.circuitId];
+    const sessions = [
+  {
+    name: "Practice 1",
+    session: race.FirstPractice,
+  },
+  {
+    name: "Practice 2",
+    session: race.SecondPractice,
+  },
+  {
+    name: "Practice 3",
+    session: race.ThirdPractice,
+  },
+  race.Sprint
+    ? {
+        name: "Sprint",
+        session: race.Sprint,
+      }
+    : null,
+  {
+    name: "Qualifying",
+    session: race.Qualifying,
+  },
+  {
+    name: "Race",
+    session: {
+      date: race.date,
+      time: race.time,
+    },
+  },
+].filter(
+  (
+    item
+  ): item is {
+    name: string;
+    session: {
+      date: string;
+      time: string;
+    };
+  } =>
+    item !== null &&
+    item.session !== undefined
+);
 
-  const sessions = [
-    {
-      name: "Practice 1",
-      session: race.FirstPractice,
-    },
-    {
-      name: "Practice 2",
-      session: race.SecondPractice,
-    },
-    {
-      name: "Practice 3",
-      session: race.ThirdPractice,
-    },
-    race.Sprint && {
-      name: "Sprint",
-      session: race.Sprint,
-    },
-    {
-      name: "Qualifying",
-      session: race.Qualifying,
-    },
-    {
-      name: "Race",
-      session: {
-        date: race.date,
-        time: race.time,
-      },
-    },
-  ].filter(Boolean);
+ 
 
   return (
     <Section>
@@ -128,37 +143,11 @@ export default async function RaceWeekendPage({
 </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <Card className="p-0 overflow-hidden">
-            <div className="border-b border-white/10 bg-white/5 px-8 py-5 text-sm uppercase tracking-widest text-zinc-500">
-              Weekend Schedule
-            </div>
-
-            <div>
-              {sessions.map((item) => (
-                <div
-                  key={item!.name}
-                  className="grid grid-cols-[180px_1fr] border-b border-white/5 px-8 py-5 hover:bg-white/5 transition-colors"
-                >
-                  <span className="font-semibold">
-                    {item!.name}
-                  </span>
-
-                  <div>
-                   <p>
-                      {formatDate(item!.session!.date)}
-                  </p>
-
-                    <p className="mt-1 text-zinc-500">
-                     {formatTime(
-                      item!.session!.date,
-                      item!.session!.time
-                        )}
-                        </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
+          <RaceTimeline
+           sessions={sessions}
+          formatDate={formatDate}
+          formatTime={formatTime}
+          />
 
           <Card className="p-8">
             <h2 className="text-xl font-semibold">

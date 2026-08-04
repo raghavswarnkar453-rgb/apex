@@ -3,9 +3,9 @@ import {
   Container,
   Section,
 } from "@/components/ui";
-
+import SeasonHeader from "@/components/calendar/SeasonHeader";
 import RaceGrid from "@/components/calendar/RaceGrid";
-
+import CalendarContent from "@/components/calendar/CalendarContent";
 import { getSeasonCalendar } from "@/services/calendar";
 import { getNextRace } from "@/services/race";
 
@@ -20,28 +20,14 @@ export default async function CalendarPage() {
     <Section>
       <Container>
 
-        <div className="mb-16">
+            <SeasonHeader
+            totalRaces={races.length}
+            />
 
-          <Badge variant="primary">
-            2026 FORMULA ONE SEASON
-          </Badge>
-
-          <h1 className="mt-6 text-5xl font-bold lg:text-6xl">
-            Race Calendar
-          </h1>
-
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-400">
-            Explore every Grand Prix of the current Formula One season.
-            View the full schedule, discover race weekends, and jump
-            directly to detailed race information.
-          </p>
-
-        </div>
-
-        <RaceGrid
+        <CalendarContent
           races={races}
-          nextRaceRound={nextRace?.round}
-        />
+           nextRaceRound={nextRace?.round}
+            />
 
       </Container>
     </Section>
