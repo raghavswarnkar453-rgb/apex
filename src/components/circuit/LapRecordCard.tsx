@@ -1,6 +1,6 @@
 "use client";
 import { Card } from "@/components/ui";
-import { RACE_METADATA } from "@/constants/raceMetadata";
+
 import { Clock3, Flag, Trophy } from "lucide-react";
 import { getCircuitMetadata } from "@/lib/circuit";
 interface LapRecordCardProps {
@@ -51,22 +51,26 @@ export default function LapRecordCard({
       <div className="mt-8 space-y-6">
 
         <Row
-          icon={<Clock3 size={18} />}
-          label="Lap Time"
-          value={metadata?.lapRecord ?? "-"}
-        />
+  icon={<Clock3 size={18} />}
+  label="Lap Time"
+  value={metadata?.lapRecord.time ?? "-"}
+/>
 
-        <Row
-          icon={<Flag size={18} />}
-          label="Driver"
-          value="Coming Soon"
-        />
+<Row
+  icon={<Flag size={18} />}
+  label="Driver"
+  value={metadata?.lapRecord.driver ?? "-"}
+/>
 
-        <Row
-          icon={<Trophy size={18} />}
-          label="Season"
-          value="Coming Soon"
-        />
+<Row
+  icon={<Trophy size={18} />}
+  label="Season"
+  value={
+    metadata?.lapRecord.season
+      ? String(metadata.lapRecord.season)
+      : "-"
+  }
+/>
 
       </div>
     </Card>

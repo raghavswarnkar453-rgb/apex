@@ -1,16 +1,26 @@
+export interface CircuitMetadata {
+  laps: number;
+  length: string;
+  corners: number;
+  firstGrandPrix: number;
+  country: string;
+  countryCode: string;
+  direction: "Clockwise" | "Anti-clockwise";
+  drsZones: number;
+
+  latitude: number;
+  longitude: number;
+
+  lapRecord: {
+    time: string;
+    driver: string;
+    season: number | null;
+  };
+}
+
 export const RACE_METADATA: Record<
   string,
-  {
-    laps: number;
-    length: string;
-    corners: number;
-    firstGrandPrix: number;
-    country: string;
-    countryCode: string;
-    direction: "Clockwise" | "Anti-clockwise";
-    drsZones: number;
-    lapRecord: string;
-  }
+  CircuitMetadata
 > = {
   albert_park: {
     laps: 58,
@@ -21,7 +31,15 @@ export const RACE_METADATA: Record<
     countryCode: "AU",
     direction: "Clockwise",
     drsZones: 4,
-    lapRecord: "1:19.813",
+
+    latitude: -37.8497,
+    longitude: 144.968,
+
+    lapRecord: {
+      time: "1:19.813",
+      driver: "Charles Leclerc",
+      season: 2024,
+    },
   },
 
   shanghai: {
@@ -33,7 +51,15 @@ export const RACE_METADATA: Record<
     countryCode: "CN",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:32.238",
+
+    latitude: 31.3389,
+    longitude: 121.2206,
+
+    lapRecord: {
+      time: "1:32.238",
+      driver: "Michael Schumacher",
+      season: 2004,
+    },
   },
 
   suzuka: {
@@ -45,7 +71,15 @@ export const RACE_METADATA: Record<
     countryCode: "JP",
     direction: "Clockwise",
     drsZones: 1,
-    lapRecord: "1:30.983",
+
+    latitude: 34.8431,
+    longitude: 136.5419,
+
+    lapRecord: {
+      time: "1:30.983",
+      driver: "Lewis Hamilton",
+      season: 2019,
+    },
   },
 
   sakhir: {
@@ -57,7 +91,15 @@ export const RACE_METADATA: Record<
     countryCode: "BH",
     direction: "Clockwise",
     drsZones: 3,
-    lapRecord: "1:31.447",
+
+    latitude: 26.0325,
+    longitude: 50.5106,
+
+    lapRecord: {
+      time: "1:31.447",
+      driver: "Pedro de la Rosa",
+      season: 2005,
+    },
   },
 
   jeddah: {
@@ -69,7 +111,15 @@ export const RACE_METADATA: Record<
     countryCode: "SA",
     direction: "Anti-clockwise",
     drsZones: 3,
-    lapRecord: "1:30.734",
+
+    latitude: 21.6319,
+    longitude: 39.1044,
+
+    lapRecord: {
+      time: "1:30.734",
+      driver: "Lewis Hamilton",
+      season: 2021,
+    },
   },
 
   miami: {
@@ -81,7 +131,15 @@ export const RACE_METADATA: Record<
     countryCode: "US",
     direction: "Anti-clockwise",
     drsZones: 3,
-    lapRecord: "1:29.708",
+
+    latitude: 25.9581,
+    longitude: -80.2389,
+
+    lapRecord: {
+      time: "1:29.708",
+      driver: "Max Verstappen",
+      season: 2023,
+    },
   },
 
   imola: {
@@ -93,7 +151,15 @@ export const RACE_METADATA: Record<
     countryCode: "IT",
     direction: "Anti-clockwise",
     drsZones: 1,
-    lapRecord: "1:15.484",
+
+    latitude: 44.3439,
+    longitude: 11.7167,
+
+    lapRecord: {
+      time: "1:15.484",
+      driver: "Lewis Hamilton",
+      season: 2020,
+    },
   },
 
   monaco: {
@@ -105,7 +171,15 @@ export const RACE_METADATA: Record<
     countryCode: "MC",
     direction: "Clockwise",
     drsZones: 1,
-    lapRecord: "1:12.909",
+
+    latitude: 43.7347,
+    longitude: 7.4206,
+
+    lapRecord: {
+      time: "1:12.909",
+      driver: "Lewis Hamilton",
+      season: 2021,
+    },
   },
 
   catalunya: {
@@ -117,7 +191,15 @@ export const RACE_METADATA: Record<
     countryCode: "ES",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:16.330",
+
+    latitude: 41.57,
+    longitude: 2.2611,
+
+    lapRecord: {
+      time: "1:16.330",
+      driver: "Max Verstappen",
+      season: 2023,
+    },
   },
 
   villeneuve: {
@@ -129,7 +211,15 @@ export const RACE_METADATA: Record<
     countryCode: "CA",
     direction: "Clockwise",
     drsZones: 3,
-    lapRecord: "1:13.078",
+
+    latitude: 45.5006,
+    longitude: -73.5228,
+
+    lapRecord: {
+      time: "1:13.078",
+      driver: "Valtteri Bottas",
+      season: 2019,
+    },
   },
     red_bull_ring: {
     laps: 71,
@@ -140,7 +230,15 @@ export const RACE_METADATA: Record<
     countryCode: "AT",
     direction: "Clockwise",
     drsZones: 3,
-    lapRecord: "1:05.619",
+
+    latitude: 47.2197,
+    longitude: 14.7647,
+
+    lapRecord: {
+      time: "1:05.619",
+      driver: "Carlos Sainz",
+      season: 2020,
+    },
   },
 
   silverstone: {
@@ -152,7 +250,15 @@ export const RACE_METADATA: Record<
     countryCode: "GB",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:27.097",
+
+    latitude: 52.0733,
+    longitude: -1.0147,
+
+    lapRecord: {
+      time: "1:27.097",
+      driver: "Max Verstappen",
+      season: 2020,
+    },
   },
 
   spa: {
@@ -164,7 +270,15 @@ export const RACE_METADATA: Record<
     countryCode: "BE",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:46.286",
+
+    latitude: 50.4372,
+    longitude: 5.9714,
+
+    lapRecord: {
+      time: "1:46.286",
+      driver: "Valtteri Bottas",
+      season: 2018,
+    },
   },
 
   hungaroring: {
@@ -176,7 +290,15 @@ export const RACE_METADATA: Record<
     countryCode: "HU",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:16.627",
+
+    latitude: 47.5822,
+    longitude: 19.2511,
+
+    lapRecord: {
+      time: "1:16.627",
+      driver: "Lewis Hamilton",
+      season: 2020,
+    },
   },
 
   zandvoort: {
@@ -188,7 +310,15 @@ export const RACE_METADATA: Record<
     countryCode: "NL",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:11.097",
+
+    latitude: 52.3888,
+    longitude: 4.5409,
+
+    lapRecord: {
+      time: "1:11.097",
+      driver: "Lewis Hamilton",
+      season: 2021,
+    },
   },
 
   monza: {
@@ -200,7 +330,15 @@ export const RACE_METADATA: Record<
     countryCode: "IT",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:21.046",
+
+    latitude: 45.6156,
+    longitude: 9.2811,
+
+    lapRecord: {
+      time: "1:21.046",
+      driver: "Rubens Barrichello",
+      season: 2004,
+    },
   },
 
   baku: {
@@ -212,7 +350,15 @@ export const RACE_METADATA: Record<
     countryCode: "AZ",
     direction: "Anti-clockwise",
     drsZones: 2,
-    lapRecord: "1:43.009",
+
+    latitude: 40.3725,
+    longitude: 49.8533,
+
+    lapRecord: {
+      time: "1:43.009",
+      driver: "Charles Leclerc",
+      season: 2019,
+    },
   },
 
   marina_bay: {
@@ -224,10 +370,17 @@ export const RACE_METADATA: Record<
     countryCode: "SG",
     direction: "Anti-clockwise",
     drsZones: 4,
-    lapRecord: "1:34.486",
-  },
 
-  americas: {
+    latitude: 1.2914,
+    longitude: 103.8644,
+
+    lapRecord: {
+      time: "1:34.486",
+      driver: "Daniel Ricciardo",
+      season: 2024,
+    },
+  },
+    americas: {
     laps: 56,
     length: "5.513 km",
     corners: 20,
@@ -236,7 +389,15 @@ export const RACE_METADATA: Record<
     countryCode: "US",
     direction: "Anti-clockwise",
     drsZones: 2,
-    lapRecord: "1:36.169",
+
+    latitude: 30.1328,
+    longitude: -97.6411,
+
+    lapRecord: {
+      time: "1:36.169",
+      driver: "Charles Leclerc",
+      season: 2019,
+    },
   },
 
   rodriguez: {
@@ -248,7 +409,15 @@ export const RACE_METADATA: Record<
     countryCode: "MX",
     direction: "Clockwise",
     drsZones: 3,
-    lapRecord: "1:17.774",
+
+    latitude: 19.4042,
+    longitude: -99.0907,
+
+    lapRecord: {
+      time: "1:17.774",
+      driver: "Valtteri Bottas",
+      season: 2021,
+    },
   },
 
   interlagos: {
@@ -260,7 +429,15 @@ export const RACE_METADATA: Record<
     countryCode: "BR",
     direction: "Anti-clockwise",
     drsZones: 2,
-    lapRecord: "1:10.540",
+
+    latitude: -23.7036,
+    longitude: -46.6997,
+
+    lapRecord: {
+      time: "1:10.540",
+      driver: "Valtteri Bottas",
+      season: 2018,
+    },
   },
 
   vegas: {
@@ -272,7 +449,15 @@ export const RACE_METADATA: Record<
     countryCode: "US",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "1:35.490",
+
+    latitude: 36.1147,
+    longitude: -115.1728,
+
+    lapRecord: {
+      time: "1:35.490",
+      driver: "Oscar Piastri",
+      season: 2024,
+    },
   },
 
   losail: {
@@ -284,7 +469,15 @@ export const RACE_METADATA: Record<
     countryCode: "QA",
     direction: "Clockwise",
     drsZones: 1,
-    lapRecord: "1:22.384",
+
+    latitude: 25.4898,
+    longitude: 51.4542,
+
+    lapRecord: {
+      time: "1:22.384",
+      driver: "Lando Norris",
+      season: 2024,
+    },
   },
 
   yas_marina: {
@@ -296,9 +489,18 @@ export const RACE_METADATA: Record<
     countryCode: "AE",
     direction: "Anti-clockwise",
     drsZones: 2,
-    lapRecord: "1:26.103",
+
+    latitude: 24.4672,
+    longitude: 54.6031,
+
+    lapRecord: {
+      time: "1:26.103",
+      driver: "Max Verstappen",
+      season: 2021,
+    },
   },
-    madring: {
+
+  madring: {
     laps: 57,
     length: "5.470 km",
     corners: 22,
@@ -307,6 +509,14 @@ export const RACE_METADATA: Record<
     countryCode: "ES",
     direction: "Clockwise",
     drsZones: 2,
-    lapRecord: "-",
+
+    latitude: 40.4722,
+    longitude: -3.6125,
+
+    lapRecord: {
+      time: "-",
+      driver: "-",
+      season: null,
+    },
   },
 };

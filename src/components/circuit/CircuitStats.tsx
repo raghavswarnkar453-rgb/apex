@@ -1,6 +1,5 @@
 "use client";
 import { Card } from "@/components/ui";
-import { RACE_METADATA } from "@/constants/raceMetadata";
 import { getCircuitMetadata } from "@/lib/circuit";
 interface CircuitStatsProps {
   circuitId: string;
@@ -46,9 +45,13 @@ export default function CircuitStats({
         : "-",
     },
     {
-      label: "Lap Record",
-      value: metadata?.lapRecord ?? "-",
-    },
+  label: "Lap Record",
+  value: metadata?.lapRecord.time ?? "-",
+},
+{
+  label: "Record Holder",
+  value: metadata?.lapRecord.driver ?? "-",
+},
     {
       label: "Country",
       value: metadata?.country ?? "-",

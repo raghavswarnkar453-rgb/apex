@@ -85,7 +85,7 @@ export default function CircuitOverview({
 
         <OverviewItem
           title="Lap Record"
-          value={metadata?.lapRecord ?? "-"}
+          value={metadata?.lapRecord.time ?? "-"}
         />
 
         <OverviewItem

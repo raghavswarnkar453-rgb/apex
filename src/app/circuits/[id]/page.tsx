@@ -70,7 +70,9 @@ export default async function CircuitPage({
                 }
               />
 
-              <WeatherCard />
+              <WeatherCard
+              circuitId={circuit.circuitId}
+              />
             </div>
           </div>
         </Container>

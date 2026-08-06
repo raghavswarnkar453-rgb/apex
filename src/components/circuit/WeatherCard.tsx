@@ -1,4 +1,3 @@
-"use client";
 import { Card } from "@/components/ui";
 import {
   CloudSun,
@@ -6,26 +5,32 @@ import {
   Wind,
   Droplets,
 } from "lucide-react";
-import { motion } from "framer-motion";
-export default function WeatherCard() {
+
+import { RACE_METADATA } from "@/constants/raceMetadata";
+import { getWeather } from "@/services/weather";
+
+interface WeatherCardProps {
+  circuitId: string;
+}
+
+export default async function WeatherCard({
+  circuitId,
+}: WeatherCardProps) {
+  const metadata =
+    RACE_METADATA[circuitId];
+
+  if (!metadata) {
+    return null;
+  }
+
+  const weather =
+    await getWeather(
+      metadata.latitude,
+      metadata.longitude
+    );
+
   return (
-    <motion.div
-    initial={{
-      opacity: 0,
-      y: 20,
-    }}
-    whileInView={{
-      opacity: 1,
-      y: 0,
-    }}
-    viewport={{
-      once: true,
-    }}
-    transition={{
-      duration: 0.4,
-    }}
-  >
-    <Card className="p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)] ">
+    <Card className="p-8 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_0_35px_rgba(239,68,68,0.15)]">
       <div className="flex items-center gap-3">
         <CloudSun
           className="text-sky-400"
@@ -38,51 +43,63 @@ export default function WeatherCard() {
           </p>
 
           <h2 className="mt-2 text-2xl font-bold">
-            Race Forecast
+            Live Race Weather
           </h2>
         </div>
       </div>
 
       <div className="mt-8 space-y-6">
         <Row
-          icon={<Thermometer size={18} />}
+          icon={
+            <Thermometer size={18} />
+          }
           label="Temperature"
-          value="Coming Soon"
+          value={
+            weather.temperature
+          }
         />
 
         <Row
           icon={<Wind size={18} />}
           label="Wind"
-          value="Coming Soon"
+          value={weather.wind}
         />
 
         <Row
-          icon={<Droplets size={18} />}
+          icon={
+            <Droplets size={18} />
+          }
           label="Humidity"
-          value="Coming Soon"
+          value={
+            weather.humidity
+          }
         />
 
         <Row
-          icon={<CloudSun size={18} />}
+          icon={
+            <CloudSun size={18} />
+          }
           label="Condition"
-          value="Coming Soon"
+          value={
+            weather.condition
+          }
         />
       </div>
     </Card>
-      </motion.div>
   );
-    
+}
+
+interface RowProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
 }
 
 function Row({
   icon,
   label,
   value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
+}: RowProps) {
   return (
     <div className="flex items-center justify-between border-b border-white/5 pb-5 last:border-none">
       <div className="flex items-center gap-3 text-zinc-400">
