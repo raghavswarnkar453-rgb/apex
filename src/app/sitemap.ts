@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base =
-    "https://apex-f1.vercel.app";
+  "https://apex-omega-gilt.vercel.app";
 
   return [
     {

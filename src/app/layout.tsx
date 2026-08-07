@@ -28,7 +28,7 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://apex-f1.vercel.app"
+    "https://apex-omega-gilt.vercel.app"
   ),
 
   title: {
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     description:
       "Live Formula One analytics, driver standings, constructor standings, circuits, weather intelligence and race insights.",
 
-    url: "https://apex-f1.vercel.app",
+    url: "https://apex-omega-gilt.vercel.app",
 
     siteName: "APEX",
 
