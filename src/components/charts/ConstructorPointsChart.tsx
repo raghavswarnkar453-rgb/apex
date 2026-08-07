@@ -9,7 +9,7 @@ import {
   Legend,
 } from "recharts";
 
-import { Card } from "@/components/ui";
+
 import ChartTooltip from "./ChartTooltip";
 interface ConstructorData {
   name: string;
@@ -41,9 +41,7 @@ export default function ConstructorPointsChart({
   title="Constructor Championship"
   subtitle="Current standings"
 >
-      <h2 className="mb-8 text-2xl font-bold">
-        Constructor Championship
-      </h2>
+      
 
       <div className="h-[420px]">
         <ResponsiveContainer
@@ -53,11 +51,19 @@ export default function ConstructorPointsChart({
           <PieChart>
 
             <Pie
-              data={data}
-              dataKey="points"
-              nameKey="name"
-              outerRadius={140}
-            >
+  data={data}
+  dataKey="points"
+  nameKey="name"
+  outerRadius={140}
+  innerRadius={75}
+  paddingAngle={3}
+  stroke="rgba(255,255,255,0.08)"
+  strokeWidth={2}
+  animationDuration={1200}
+  label={({ percent }) =>
+    `${((percent ?? 0) * 100).toFixed(0)}%`
+  }
+>
               {data.map((_, index) => (
                 <Cell
                   key={index}
@@ -70,11 +76,22 @@ export default function ConstructorPointsChart({
               ))}
             </Pie>
 
-           <Tooltip
+  <Tooltip
+  cursor={{
+    fill: "rgba(239,68,68,0.08)",
+  }}
   content={<ChartTooltip />}
 />
 
-            <Legend />
+           <Legend
+  verticalAlign="bottom"
+  iconType="circle"
+  wrapperStyle={{
+    paddingTop: 20,
+    color: "#a1a1aa",
+    fontSize: 13,
+  }}
+/>
 
           </PieChart>
         </ResponsiveContainer>

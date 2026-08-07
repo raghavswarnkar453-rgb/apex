@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import ChartTooltip from "./ChartTooltip";
-import { Card } from "@/components/ui";
+
 import ChartCard from "./ChartCard";
 interface DriverData {
   name: string;
@@ -31,9 +31,7 @@ export default function DriverPointsChart({
 >
 
 
-      <h2 className="mb-8 text-2xl font-bold">
-        Driver Championship Points
-      </h2>
+      
 
       <div className="h-[420px]">
         <ResponsiveContainer
@@ -42,36 +40,63 @@ export default function DriverPointsChart({
         >
           <BarChart data={data}>
             <CartesianGrid
-              strokeDasharray="3 3"
-              stroke="#27272a"
-            />
+  vertical={false}
+  stroke="#27272a"
+  strokeDasharray="4 4"
+/>
 
+            
             <XAxis
+  axisLine={false}
+  tickLine={false}
   dataKey="name"
   interval={0}
   angle={-45}
   textAnchor="end"
   height={80}
   tick={{
+  fill: "#a1a1aa",
+  fontSize: 12,
+  fontWeight: 600,
+}}
+/>
+
+            <YAxis
+  axisLine={false}
+  tickLine={false}
+  tick={{
     fill: "#a1a1aa",
     fontSize: 12,
   }}
 />
 
-            <YAxis
-              tick={{
-                fill: "#a1a1aa",
-              }}
-            />
-
-        <Tooltip
+<Tooltip
+  cursor={{
+    fill: "rgba(239,68,68,0.08)",
+  }}
   content={<ChartTooltip />}
 />
             <Bar
-              dataKey="points"
-              radius={[8, 8, 0, 0]}
-              fill="#ef4444"
-            />
+  dataKey="points"
+  radius={[10, 10, 0, 0]}
+  fill="#ef4444"
+  maxBarSize={42}
+/>
+<Bar
+  dataKey="points"
+  radius={[10, 10, 0, 0]}
+  fill="#ef4444"
+  maxBarSize={42}
+  animationDuration={1200}
+/>
+<ChartCard
+  title="Driver Championship"
+  subtitle="Current season points"
+>
+  <div className="h-[420px]">
+    ...
+  </div>
+</ChartCard>
           </BarChart>
         </ResponsiveContainer>
       </div>
